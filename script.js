@@ -72,9 +72,6 @@ const showWinner = (winner) => {
 };
 
 const checkWinner = () => {
-    let drawFlag = true;
-
-  for (let pattern of winPatterns) {
   for (let pattern of winPatterns) {
     let pos1Val = boxes[pattern[0]].innerText;
     let pos2Val = boxes[pattern[1]].innerText;
