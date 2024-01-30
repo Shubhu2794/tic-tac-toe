@@ -37,7 +37,7 @@ main {
     width: 18vmin;
   border-radius: 2rem;
   border: none;
-  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+  box-shadow: 7px -7px 1rem rgba(0,0,0,0.3);
   font-size: 8vmin;
   color: #4A5759;
   background-color: #F7E1D7;
