@@ -3,6 +3,7 @@ let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
+let count=0;
 
 let turn0 = true; //playerX, playerO
 
@@ -31,20 +32,32 @@ const resetBoard = () => {
   }
 };
 
+const draw = (count) => {
+  if (count == 9){
+    disableBoxes();
+    msg.innerText = ` Game is DRAW!! `;
+  msgContainer.classList.remove("hide")
+  }
+};
+
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
     if (turn0) {
       //player(O)
       box.innerText = "O";
       turn0 = false;
+      count+=1;
     } else {
       //player(X)
       box.innerText = "X";
       turn0 = true;
+      count+=1;
     }
+
     box.disabled = true;
 
     checkWinner();
+    draw(count);
   });
 });
 
@@ -76,6 +89,9 @@ const checkWinner = () => {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
         showWinner(pos1Val);
       }
+    }
+    else{
+      draw(count);
     }
   }
 };
