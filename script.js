@@ -21,7 +21,14 @@ const resetGame = () => {
   turn0 = true;
   enableBoxes();
   msgContainer.classList.add("hide");
-}
+};
+
+const resetBoard = () => {
+    for (let box of boxes) {
+      box.innerText = "";
+      box.disabled = false;
+    }
+};
 
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
