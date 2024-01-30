@@ -32,16 +32,26 @@ const resetBoard = () => {
   }
 };
 
+const draw = (count) => {
+  if (count == 9){
+    disableBoxes();
+    msg.innerText = ` Game is DRAW!! `;
+  msgContainer.classList.remove("hide")
+  }
+};
+
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
     if (turn0) {
       //player(O)
       box.innerText = "O";
+      box.style.color= "#9B95C3";
       turn0 = false;
       count+=1;
     } else {
       //player(X)
       box.innerText = "X";
+      box.style.color= "#054566";
       turn0 = true;
       count+=1;
     }
@@ -72,24 +82,26 @@ const showWinner = (winner) => {
 };
 
 const checkWinner = () => {
+  let drawFlag = true;
+
   for (let pattern of winPatterns) {
     let pos1Val = boxes[pattern[0]].innerText;
     let pos2Val = boxes[pattern[1]].innerText;
     let pos3Val = boxes[pattern[2]].innerText;
 
-    if (pos1Val !== "" && pos2Val !== "" && pos3Val !== "") {
+    if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
         showWinner(pos1Val);
         return; // If there's a winner, exit the function
       }
+    } else {
+      drawFlag = false;
     }
   }
 
-  // Check for a draw
-  if (count === 9) {
-    disableBoxes();
-    msg.innerText = "Game is DRAW!";
-    msgContainer.classList.remove("hide");
+  // Check for a draw after iterating through all patterns
+  if (drawFlag) {
+    draw(count);
   }
 };
 
