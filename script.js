@@ -92,18 +92,15 @@ const checkWinner = () => {
 
     if (pos1Val !== "" && pos2Val !== "" && pos3Val !== "") {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
-        winner = pos1Val;
+        showWinner(pos1Val);
         break; // Exit the loop if a winner is found
       }
     }
   }
-
-  if (winner) {
-    showWinner(winner);
-  } else if (count === 9) {
+  else if (count === 9) {
     // No winner and all boxes filled, declare a draw
     disableBoxes();
-     draw(count);
+    draw(count);
   }
 };
 
