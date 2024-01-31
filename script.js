@@ -1,4 +1,5 @@
 let boxes = document.querySelectorAll(".box");
+let clickSound = document.getElementById("clickSound");
 let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
@@ -59,9 +60,8 @@ boxes.forEach((box) => {
     }
 
     box.disabled = true;
-
+    clickSound.play();
     checkWinner();
-    draw(count);
   });
 });
 
