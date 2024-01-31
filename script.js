@@ -23,6 +23,7 @@ const resetGame = () => {
   enableBoxes();
   resetBoard();
   msgContainer.classList.add("hide");
+  count=0;
 };
 
 const resetBoard = () => {
@@ -30,6 +31,7 @@ const resetBoard = () => {
     box.innerText = "";
     box.disabled = false;
   }
+  count=0;
 };
 
 const draw = (count) => {
