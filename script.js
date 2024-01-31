@@ -51,16 +51,17 @@ boxes.forEach((box) => {
       box.style.color= "#9B95C3";
       turn0 = false;
       count+=1;
+      clickSound.play();
     } else {
       //player(X)
       box.innerText = "X";
       box.style.color= "#054566";
       turn0 = true;
       count+=1;
+      clickSound.play();
     }
 
     box.disabled = true;
-    clickSound.play();
     checkWinner();
   });
 });
