@@ -84,26 +84,25 @@ const showWinner = (winner) => {
 };
 
 const checkWinner = () => {
-  let drawFlag = true;
-
   for (let pattern of winPatterns) {
     let pos1Val = boxes[pattern[0]].innerText;
     let pos2Val = boxes[pattern[1]].innerText;
     let pos3Val = boxes[pattern[2]].innerText;
 
-    if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
+    if (pos1Val !== "" && pos2Val !== "" && pos3Val !== "") {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
-        showWinner(pos1Val);
-        return; // If there's a winner, exit the function
+        winner = pos1Val;
+        break; // Exit the loop if a winner is found
       }
-    } else {
-      drawFlag = false;
     }
   }
 
-  // Check for a draw after iterating through all patterns
-  if (drawFlag) {
-    draw(count);
+  if (winner) {
+    showWinner(winner);
+  } else if (count === 9) {
+    // No winner and all boxes filled, declare a draw
+    disableBoxes();
+     draw(count);
   }
 };
 
