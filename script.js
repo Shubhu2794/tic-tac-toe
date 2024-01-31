@@ -92,13 +92,14 @@ const checkWinner = () => {
 
     if (pos1Val !== "" && pos2Val !== "" && pos3Val !== "") {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
-        showWinner(pos1Val);
-        break; // Exit the loop if a winner is found
+            clickSound.addEventListener("ended", () => {
+              showWinner(pos1Val);
+        });
+        return; // Exit the loop if a winner is found
       }
     }
   }
-  else if (count === 9) {
-    // No winner and all boxes filled, declare a draw
+  if (count === 9) {
     disableBoxes();
     draw(count);
   }
